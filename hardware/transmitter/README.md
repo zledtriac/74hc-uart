@@ -18,6 +18,12 @@ an output enable circuit after the U3B pin 9 output, which can be controlled by 
 The Control header (J4) has two other pins for control, pin 5 - !WR, and pin 8 - Busy. The !WR is an active-low input and this input starts the data transmission.
 The Busy is an output which will be held high while the transmission is going, or while the !WR input is held low.
 
+To send data, first set the data on the Data header (J1) then send a low pulse on the !WR pin. This will trigger the Input trigger circuitry. In this stage the output 
+of the U5D will turn high, but since the U3A D flip-flop is not set the inverted output of the U3A D flip-flop is also high, this will set the output of the U4A NAND gate to low, this will enables the load pins of the U1 (74HC165) shift register and the U2 (74HC191) counter IC, so the data will be loaded into the U1 shift register and the U2 counter IC will be set to 0. Since the U3A D flip-flop's clock input is connected to the main clock signal, the U3A D flip-flop will set and the inverted output of the U3A D flip-flop will turn to low.
+
 ## Manual operation
 
 ## Oscillator
+The oscillator is made out of two schmitt-triggered NAND gate of the U4 (74HC132) IC. With the 10nF C7 capacitor and the 10kOhm R5 plus the 10kOhm RV1 trimmer 
+potentiometer this oscillator can be adjusted between 6kHz and 12kHz. The oscillator's frequency is equal to the baud rate, so for the 9600 baud rate set the 
+oscillator to 9.6kHz. For the tuning, a simple digital multimeter with frequency measuring capability is enough.
