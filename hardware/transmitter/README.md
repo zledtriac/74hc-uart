@@ -16,7 +16,7 @@ it is possible that the cicuit will transmit a random data on the output.
 an output enable circuit after the U3B pin 9 output, which can be controlled by a switch, delay circuit or from software if the transmitter is connected to a CPU.*
 
 The Control header (J4) has two other pins for control, pin 5 - !WR, and pin 8 - Busy. The !WR is an active-low input and this input starts the data transmission.
-The Busy is an output which will be held high while the transmission is going, or while the !WR input is held low.
+The Busy is an output which will be held high while the transmission is going (Short pulse section on *Figure 1.*), or while the !WR input is held low (Long pulse section on *Figure 1.*).
 
 To send data, first set the data on the Data header (J1) then send a low pulse on the !WR pin. This will trigger the Input trigger circuitry. In this stage the output 
 of the U5D will turn high, but since the U3A D flip-flop is not set, the inverted output of the U3A D flip-flop is also high, this will set the output of the U4A NAND 
@@ -28,7 +28,9 @@ After this, every clock pulse will shift out the data from U1 (74HC165) shift re
 When the U2 (74HC191) counter reaches 8, the counting will stop and if the !WR input is high, it will reset the Input trigger circuitry, and after this, one clock 
 pulse is needed to reset the U3A D flip-flop. So when the next write pulse comes in, the whole process will repeat.
 
-![Timing diagram](../../img/transmittertimig.svg)
+<p align="center">
+<img src="../../img/transmittertiming.svg">
+</p>
 
 ## Manual operation
 To use the circuit in a manual operation mode, set the jumper on the J3 pin header to bridge the 1-2 pins, and on the J5 pin header to bridge the 2-3 pins. This will 
