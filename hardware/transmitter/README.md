@@ -28,6 +28,8 @@ After this, every clock pulse will shift out the data from U1 (74HC165) shift re
 When the U2 (74HC191) counter reaches 8, the counting will stop and if the !WR input is high, it will reset the Input trigger circuitry, and after this, one clock 
 pulse is needed to reset the U3A D flip-flop. So when the next write pulse comes in, the whole process will repeat.
 
+![Timing diagram](../../img/transmittertimig.svg)
+
 ## Manual operation
 To use the circuit in a manual operation mode, set the jumper on the J3 pin header to bridge the 1-2 pins, and on the J5 pin header to bridge the 2-3 pins. This will 
 enables the U6 (74HC244) output so the data set by the SW1 dip switch will be put on the DATA input, and it will connect the SW2 button to the !WR input.
