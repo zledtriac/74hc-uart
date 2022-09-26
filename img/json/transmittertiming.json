@@ -1,0 +1,20 @@
+{signal: [
+    {name: 'DATA', wave: 'x2.x............', data: ['DATA']},
+    ['Short pulse',
+  	  {name: '!WR', wave: 'h.Nh............'},
+  	  {name: 'Busy', wave: '0.1.........0...'}
+    ],
+    {},
+    ['Long pulse',
+  	  {name: '!WR', wave: 'h.L...........h.'},
+  	  {name: 'Busy', wave: '0.1...........0.'}
+    ],
+    {},
+    {name: 'Internal clock', wave: 'P...............'},
+    {name: 'TX', wave: '1..0222222221...', data: ['D0', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7']}
+  ], head: {
+    text: 'Timing diagram'
+  }, foot: {
+    text: 'Figure 1.'
+  }
+}
